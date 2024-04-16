@@ -277,12 +277,11 @@ void RunInference(Settings* settings,
 
   if (settings->verbose) PrintInterpreterState(interpreter.get());
 
-  // get input dimension from the input tensor metadata
-  // assuming one input only
+  
   TfLiteIntArray* dims = interpreter->tensor(input)->dims;
-  int wanted_height = dims->data[1];
-  int wanted_width = dims->data[2];
-  int wanted_channels = dims->data[3];
+  int wanted_height = 640;
+  int wanted_width = 640;
+  int wanted_channels = 3;
 
   settings->input_type = interpreter->tensor(input)->type;
   switch (settings->input_type) {
