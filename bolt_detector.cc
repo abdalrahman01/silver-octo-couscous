@@ -1,4 +1,4 @@
-#include "tensorflow/lite/examples/label_image/label_image.h"
+#include "tensorflow/lite/examples/bolt_detector/bolt_detector.h"
 
 #include <fcntl.h>      // NOLINT(build/include_order)
 #include <getopt.h>     // NOLINT(build/include_order)
@@ -23,8 +23,8 @@
 #include "absl/memory/memory.h"
 #include "tensorflow/lite/delegates/nnapi/nnapi_delegate.h"
 #include "tensorflow/lite/delegates/xnnpack/xnnpack_delegate.h"
-#include "tensorflow/lite/examples/label_image/bitmap_helpers.h"
-#include "tensorflow/lite/examples/label_image/get_top_n.h"
+#include "tensorflow/lite/examples/bolt_detector/bitmap_helpers.h"
+#include "tensorflow/lite/examples/bolt_detector/get_top_n.h"
 #include "tensorflow/lite/kernels/register.h"
 #include "tensorflow/lite/optional_debug_tools.h"
 #include "tensorflow/lite/profiling/profiler.h"
@@ -40,7 +40,7 @@
 #define LOG(severity) (std::cerr << (#severity) << ": ")
 
 namespace tflite {
-namespace label_image {
+namespace bolt_detector {
 
 double get_us(struct timeval t) { return (t.tv_sec * 1000000 + t.tv_usec); }
 
@@ -396,7 +396,7 @@ void RunInference(Settings* settings,
 
 void display_usage() {
   LOG(INFO)
-      << "label_image\n"
+      << "bolt_detector\n"
       << "--accelerated, -a: [0|1], use Android NNAPI or not\n"
       << "--allow_fp16, -f: [0|1], allow running fp32 models with fp16 or not\n"
       << "--count, -c: loop interpreter->Invoke() for certain times\n"
@@ -524,10 +524,10 @@ int Main(int argc, char** argv) {
   return 0;
 }
 
-}  // namespace label_image
+}  // namespace bolt_detector
 }  // namespace tflite
 
 int main(int argc, char** argv) {
   std::cout << "******************************************\n" << "* Weclome to the bolt detector AI, created by Abd Alrahman Atieh abat@hms.se *" << "******************************************\n" << std::endl; 
-  return tflite::label_image::Main(argc, argv);
+  return tflite::bolt_detector::Main(argc, argv);
 }
