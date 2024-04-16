@@ -400,10 +400,6 @@ void display_usage() {
       << "--accelerated, -a: [0|1], use Android NNAPI or not\n"
       << "--allow_fp16, -f: [0|1], allow running fp32 models with fp16 or not\n"
       << "--count, -c: loop interpreter->Invoke() for certain times\n"
-      << "--gl_backend, -g: [0|1]: use GL GPU Delegate on Android\n"
-      << "--hexagon_delegate, -j: [0|1]: use Hexagon Delegate on Android\n"
-      << "--input_mean, -b: input mean\n"
-      << "--input_std, -s: input standard deviation\n"
       << "--image, -i: image_name.bmp\n"
       << "--labels, -l: labels for the model\n"
       << "--tflite_model, -m: model_name.tflite\n"
@@ -412,7 +408,6 @@ void display_usage() {
       << "--threads, -t: number of threads\n"
       << "--verbose, -v: [0|1] print more information\n"
       << "--warmup_runs, -w: number of warmup runs\n"
-      << "--xnnpack_delegate, -x [0:1]: xnnpack delegate\n"
       << "\n";
 }
 
@@ -441,10 +436,6 @@ int Main(int argc, char** argv) {
         {"input_mean", required_argument, nullptr, 'b'},
         {"input_std", required_argument, nullptr, 's'},
         {"num_results", required_argument, nullptr, 'r'},
-        {"max_profiling_buffer_entries", required_argument, nullptr, 'e'},
-        {"warmup_runs", required_argument, nullptr, 'w'},
-        {"gl_backend", required_argument, nullptr, 'g'},
-        {"hexagon_delegate", required_argument, nullptr, 'j'},
         {"xnnpack_delegate", required_argument, nullptr, 'x'},
         {nullptr, 0, nullptr, 0}};
 
@@ -537,5 +528,6 @@ int Main(int argc, char** argv) {
 }  // namespace tflite
 
 int main(int argc, char** argv) {
+  std::cout << "******************************************\n" << "* Weclome to the bolt detector AI, created by Abd Alrahman Atieh abat@hms.se *" << "******************************************\n" << std::endl; 
   return tflite::label_image::Main(argc, argv);
 }
